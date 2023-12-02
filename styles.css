@@ -11,9 +11,7 @@ body {
 }
 
 #newArrivalCarousel .carousel-inner .carousel-item img {
-
   max-height: 500px;
-  /* Adjust the maximum height of the images within the carousel */
 }
 
 /*Contact Page*/
