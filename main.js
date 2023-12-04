@@ -1,18 +1,14 @@
 //get container from html
 const productContainer = document.getElementById("productCardsContainer");
-// const cartContainer = document.getElementById("cartContainer");
-
+const cartContainer = document.getElementById("cartContainer");
 //bootstrap modal
 const modal = document.getElementById("modalBody");
 const closeButton = document.querySelector(".modal .btn-close");
-
 //buttons
 const viewDetailsButtons = document.querySelectorAll(".viewDetailsBtn");
 const addToCartButtons = document.querySelectorAll(".addToCartBtn");
-
 //footer
 const footer = document.querySelector('footer');
-
 /*In order to ensure the footer will always be at the bottom without overlapping content
 apply padding-bottom to body based off the footers height. This ensures even if more content is added. the footer
 will not overlap */
@@ -96,6 +92,7 @@ const productList = [
     largeThumbnail: "./images/X9X_large.jpg",
   },
 ];
+
 //set cart array
 let cartList = [];
 //retrieve cart data from localStorage if it exists
@@ -138,6 +135,7 @@ const showProductDetails = (productName) => {
   </article>
 
   `;
+
   //set content to modal content
   modal.innerHTML = modalContent;
   // console.log(modalContent);
@@ -211,5 +209,26 @@ Adding event listeners to all the buttons was not working since JS couldn't find
     }
   });
 };
+
+//Display cartItems
+// const displayCartItems = (cartItems) =>{
+//   //get cartList from local storage
+//   cartList = JSON.parse(storedCart);
+
+//   //loop through & create HTML for each cartItem
+//   const cartListHTML = cartItems.map((cartItem) =>{
+//     return `
+//       <article class="cartItem">
+//       <div>
+//       <h3>${cartItem.Name}</h3>
+//       <p class="mt-2">Price: $${cartItem.Price}</p>
+//       </div>
+//       </article>
+//     `
+//   })
+//   .join("");
+
+//   cartContainer.innerHTML = cartListHTML;
+// };
 
 createProductCards(productList);

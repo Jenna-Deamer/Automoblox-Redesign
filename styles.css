@@ -35,7 +35,7 @@ header h1{
 header h2{
   font-size: 3rem;
 }
-h1,h2{
+h1,h2,h3,h4{
   font-family: 'Rowdies', sans-serif;
 }
 h2 {
@@ -80,7 +80,7 @@ h2 {
 }
 
 .customBorder {
-  border-bottom: solid 2px;
+  border-bottom: solid 2px var(--black);
 }
 
 .starIcon {
@@ -105,6 +105,12 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+footer a{
+  color: #91bccf;
+}
+footer a:hover{
+  color: #4b9abe;
 }
 
 footer ul {
