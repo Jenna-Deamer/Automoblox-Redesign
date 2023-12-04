@@ -3,6 +3,7 @@ const productContainer = document.getElementById("productCardsContainer");
 // const cartContainer = document.getElementById("cartContainer");
 //bootstrap modal
 const modal = document.getElementById("modalBody");
+const closeButton = document.querySelector(".modal .btn-close");
 
 //buttons
 const viewDetailsButtons = document.querySelectorAll(".viewDetailsBtn");
@@ -95,13 +96,37 @@ const showProductDetails = (productName) => {
   const product = productList.find((product) => product.Name === productName);
   //Modify modal content
   const modalContent = `
-  <article>
-  <h3>${product.Name}</h3>
+  <article class="row customBorder pb-3">
+  
+  <div class="col-md-6">
+  <img src="${product.largeThumbnail}" alt="${product.Name}" class="img-fluid customSmallThumbnail" />
+  </div>
+  <div class="col-md-6 mb-2">
+  <p class="mt-2">${product.Description}</p>
+  <p class="mt-2">Price: $${product.Price}</p>
+  <small class="customSmallText">In Stock</small>
+  </div>
   </article>
+  
+  <article class="row pt-3">
+  <div class="col-md-6">
+  <h4 class="text-center"><i class="bi bi-star-fill starIcon"></i> Reviews</h4>
+
+  <p><i class="bi bi-person-circle"></i> Lorem ipsum dolor sit.</p>
+  <p><i class="bi bi-person-circle"></i> Lorem ipsum dolor sit.</p>
+  </div>
+
+  <div class="col-md-6">
+  <h4 class="text-center"><i class="bi bi-bar-chart"></i> Specifications</h4>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci distinctio ad eveniet quaerat!</p>
+  </div>
+
+  </article>
+
   `;
   //set content to modal content
   modal.innerHTML = modalContent;
-  console.log(modalContent);
+  // console.log(modalContent);
 
   //show modal
   const productModal = new bootstrap.Modal(
@@ -109,6 +134,7 @@ const showProductDetails = (productName) => {
   );
   productModal.show();
 };
+
 //add selected product name & price to cart
 const addToCart = (productName, productPrice) => {
   // Find the clicked product by its name
