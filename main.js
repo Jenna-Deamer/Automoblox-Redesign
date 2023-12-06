@@ -1,6 +1,6 @@
 //get container from html
 const productContainer = document.getElementById("productCardsContainer");
-const cartContainer = document.getElementById("cartContainer");
+
 //bootstrap modal
 const modal = document.getElementById("modalBody");
 const closeButton = document.querySelector(".modal .btn-close");
@@ -8,7 +8,7 @@ const closeButton = document.querySelector(".modal .btn-close");
 const viewDetailsButtons = document.querySelectorAll(".viewDetailsBtn");
 const addToCartButtons = document.querySelectorAll(".addToCartBtn");
 //footer
-const footer = document.querySelector('footer');
+const footer = document.querySelector("footer");
 /*In order to ensure the footer will always be at the bottom without overlapping content
 apply padding-bottom to body based off the footers height. This ensures even if more content is added. the footer
 will not overlap */
@@ -17,7 +17,7 @@ will not overlap */
 const footerHeight = footer.offsetHeight;
 
 // Apply padding to the body equal to the footer height
-document.body.style.paddingBottom = footerHeight + 'px';
+document.body.style.paddingBottom = footerHeight + "px";
 
 //Products stored as objects in array
 const productList = [
@@ -93,13 +93,9 @@ const productList = [
   },
 ];
 
-//set cart array
-let cartList = [];
 //retrieve cart data from localStorage if it exists
 const storedCart = localStorage.getItem("cart");
-if (storedCart) {
-  cartList = JSON.parse(storedCart);
-}
+const cartList = JSON.parse(storedCart) || []; //if no cart is stored, Initialize as empty
 
 //function to display product details in modal
 const showProductDetails = (productName) => {
@@ -209,26 +205,5 @@ Adding event listeners to all the buttons was not working since JS couldn't find
     }
   });
 };
-
-//Display cartItems
-// const displayCartItems = (cartItems) =>{
-//   //get cartList from local storage
-//   cartList = JSON.parse(storedCart);
-
-//   //loop through & create HTML for each cartItem
-//   const cartListHTML = cartItems.map((cartItem) =>{
-//     return `
-//       <article class="cartItem">
-//       <div>
-//       <h3>${cartItem.Name}</h3>
-//       <p class="mt-2">Price: $${cartItem.Price}</p>
-//       </div>
-//       </article>
-//     `
-//   })
-//   .join("");
-
-//   cartContainer.innerHTML = cartListHTML;
-// };
 
 createProductCards(productList);
