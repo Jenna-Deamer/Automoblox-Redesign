@@ -205,5 +205,5 @@ Adding event listeners to all the buttons was not working since JS couldn't find
     }
   });
 };
-
+//render
 createProductCards(productList);

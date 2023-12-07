@@ -2,6 +2,16 @@
 const cartContainer = document.getElementById("cartContainer");
 //Cart Sum holder
 const cartSum = document.getElementById("cartSum");
+//footer
+const footer = document.querySelector("footer");
+/*In order to ensure the footer will always be at the bottom without overlapping content
+apply padding-bottom to body based off the footers height. This ensures even if more content is added. the footer
+will not overlap */
+// Calculate the footer height
+const footerHeight = footer.offsetHeight;
+
+// Apply padding to the body equal to the footer height
+document.body.style.paddingBottom = footerHeight + "px";
 
 //retrieve cart data from localStorage if it exists
 const storedCart = localStorage.getItem("cart");
@@ -28,21 +38,19 @@ const displayCartItems = (cartItems) => {
   const cartListHTML = cartItems
     .map((cartItem, index) => {
       return `
-        <article class="cartItem">
-        <div class="row">
-
+      <article class="cartItem customBorder mb-2">
+      <div class="row">
+      
         <div class="col-md-6">
-        <h4>${cartItem.Name}</h4>
+          <h4>${cartItem.Name}</h4>
+          <p class="mt-2">Price: $${cartItem.Price}</p>
         </div>
 
-        <div class="col-md-6">
-        <button class="btn btn-danger removeBtn" data-index"${index}">X</button>
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+          <button class="removeBtn" data-index="${index}">X</button>
         </div>
-        </div>
-       
-        <p class="mt-2">Price: $${cartItem.Price}</p>
-        </div>
-        </article>
+      </div>
+    </article>
       `;
     })
     .join(""); //join strings

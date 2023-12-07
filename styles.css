@@ -80,13 +80,38 @@ h2 {
 }
 
 .customBorder {
-  border-bottom: solid 2px var(--black);
+  border-bottom: solid 1px var(--black);
 }
 
 .starIcon {
   color: var(--yellow)
 }
+/*CART PAGE*/
+.checkoutContainer{
+  border-right: solid 1px var(--black);
+}
+#checkoutBtn{
+  width: 50%;
+}
+.removeBtn{
+  background-color: transparent;
+  padding: 8px;
+  border: 2px solid var(--red);
+  border-radius: 4px;
+  color: var(--black);
+  font-weight: bold;
+}
+.removeBtn:hover{
+  transition: .5s;
+  background-color: var(--red);
+}
 
+#cartSum{
+  background-color: var(--secondary);
+  padding: 8px;
+  border-radius: 4px;
+  color: var(--white);
+}
 /*Contact Page*/
 form {
   padding: 2em 1em 2em 1em;
