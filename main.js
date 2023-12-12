@@ -27,6 +27,7 @@ const productList = [
     Price: 12.99,
     smallThumbnail: "./images/A9_small.jpg",
     largeThumbnail: "./images/A9_large.jpg",
+    color: "orange"
   },
   {
     Name: "A9S",
@@ -34,6 +35,7 @@ const productList = [
     Price: 15.99,
     smallThumbnail: "./images/A9S_small.jpg",
     largeThumbnail: "./images/A9S_large.jpg",
+    color: "black"
   },
   {
     Name: "C9",
@@ -41,6 +43,7 @@ const productList = [
     Price: 25.99,
     smallThumbnail: "./images/C9_small.jpg",
     largeThumbnail: "./images/C9_large.jpg",
+    color: "red"
   },
   {
     Name: "C9S",
@@ -48,6 +51,7 @@ const productList = [
     Price: 29.99,
     smallThumbnail: "./images/C9S_small.jpg",
     largeThumbnail: "./images/C9S_large.jpg",
+    color: "brown"
   },
   {
     Name: "M9",
@@ -55,6 +59,7 @@ const productList = [
     Price: 19.99,
     smallThumbnail: "./images/M9_small.jpg",
     largeThumbnail: "./images/M9_large.jpg",
+    color: "lightblue"
   },
   {
     Name: "S9",
@@ -62,6 +67,7 @@ const productList = [
     Price: 32.99,
     smallThumbnail: "./images/S9_small.jpg",
     largeThumbnail: "./images/S9_large.jpg",
+    color: "blue"
   },
   {
     Name: "S9R",
@@ -69,6 +75,7 @@ const productList = [
     Price: 34.99,
     smallThumbnail: "./images/S9R_small.jpg",
     largeThumbnail: "./images/S9R_large.jpg",
+    color: "darkblue"
   },
   {
     Name: "T9",
@@ -76,6 +83,7 @@ const productList = [
     Price: 27.99,
     smallThumbnail: "./images/T9_small.jpg",
     largeThumbnail: "./images/T9_large.jpg",
+    color: "green"
   },
   {
     Name: "X9",
@@ -83,6 +91,7 @@ const productList = [
     Price: 39.99,
     smallThumbnail: "./images/X9_small.jpg",
     largeThumbnail: "./images/X9_large.jpg",
+    color: "purple"
   },
   {
     Name: "X9X",
@@ -90,6 +99,7 @@ const productList = [
     Price: 42.99,
     smallThumbnail: "./images/X9X_small.jpg",
     largeThumbnail: "./images/X9X_large.jpg",
+    color: "green"
   },
 ];
 
@@ -101,9 +111,11 @@ const cartList = JSON.parse(storedCart) || []; //if no cart is stored, Initializ
 const showProductDetails = (productName) => {
   //find what product was clicked on by matching the name to the products in array
   const product = productList.find((product) => product.Name === productName);
+  //set car color to var & use inline style to update color to car color
+  const carColor = product.color;
   //Modify modal content
   const modalContent = `
-  <article class="row customBorder pb-3">
+  <article class="row customBorder pb-3" style="border-color: ${carColor};">
   
   <div class="col-md-6">
   <img src="${product.largeThumbnail}" alt="${product.Name}" class="img-fluid customSmallThumbnail" />
@@ -173,8 +185,8 @@ const createProductCards = (products) => {
           <h3>${product.Name}</h3>
           <img src="${product.smallThumbnail}" alt="${product.Name}" class="img-fluid customSmallThumbnail" />
           <p class="mt-2">Price: $${product.Price}</p>
-          <button class="addToCartBtn btn btn-primary mt-2" data-product-name="${product.Name}" data-product-price="${product.Price}">Add to Cart</button>
-          <button class="btn btn-primary mt-2 viewDetailsBtn" data-bs-toggle="modal" data-bs-target="#productModal" data-product-name="${product.Name}">View Details</button>
+          <button class="addToCartBtn btn btn-primary mt-2" data-product-name="${product.Name}" data-product-price="${product.Price}"><i class="bi bi-cart"></i> Add to Cart</button>
+          <button class="btn btn-primary mt-2 viewDetailsBtn" data-bs-toggle="modal" data-bs-target="#productModal" data-product-name="${product.Name}"><i class="bi bi-file-bar-graph"></i> View Details</button>
         </div>
       </article>
     `;

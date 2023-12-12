@@ -80,7 +80,7 @@ h2 {
 }
 
 .customBorder {
-  border-bottom: solid 1px var(--black);
+  border-bottom: solid 2px var(--black);
 }
 
 .starIcon {
