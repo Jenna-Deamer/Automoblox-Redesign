@@ -18,12 +18,11 @@ const storedCart = localStorage.getItem("cart");
 const cartList = JSON.parse(storedCart) || []; //if no cart is stored, Initialize as empty
 
 const displaySum = () => {
-    let sum = 0;
+  let sum = 0;
   //loop through cartList
   cartList.forEach((cartItem) => {
     //add each cartList Item's price to sum.
     sum += parseFloat(cartItem.Price); //takes string & convert into a floating Num.
-    
   });
   //display sum in cart.html
   cartSum.innerHTML = "Total $" + sum.toFixed(2);
@@ -31,7 +30,7 @@ const displaySum = () => {
 
 //Display cartItems
 const displayCartItems = (cartItems) => {
-    displaySum();
+  displaySum();
   //loop through & create HTML for each cartItem
   //as each btn is generated, set data attribute to the cartItem index.
   //Having the index makes it easier to remove the selected item from the array.
@@ -59,14 +58,28 @@ const displayCartItems = (cartItems) => {
 };
 
 const removeCartItem = (index) => {
-  //splice out of array
-  cartList.splice(index, 1);
+  //use index to select the cartItem that needs the animation class applied
+  const cartItemToRemove = document.querySelectorAll(".cartItem")[index]
+  // Add the animation class to fade out selected item
+  cartItemToRemove.classList.add("cartItemRemoved");
 
-  //update local storage
-  localStorage.setItem("cart", JSON.stringify(cartList));
+  // Wait for the animation to complete before removing item
+  cartItemToRemove.addEventListener("animationend", () => {
+    // Remove the cartItem from screen. Removing just one will cause the item to re-appear.
+    cartItemToRemove.remove();
+    // Remove the item from the cartList array
+    cartList.splice(index, 1);
+
+    // Update local storage
+    localStorage.setItem("cart", JSON.stringify(cartList));
+
+    // Update the display every time animation & removal is completed
+    displaySum();
+    displayCartItems(cartList);
+  });
 };
 
-//add event listener to parent, then find what child was clicked on .
+//add event listener to parent, then find what child was clicked on
 cartContainer.addEventListener("click", function (event) {
   //if child element with removeBtn class is clicked
   if (event.target.classList.contains("removeBtn")) {
@@ -75,9 +88,9 @@ cartContainer.addEventListener("click", function (event) {
     //run remove & pass it the item to be removed
     removeCartItem(selectedIndex);
 
-    displaySum();
-    //render updated cartList
-    displayCartItems(cartList);
+    // displaySum();
+    // //render updated cartList
+    // displayCartItems(cartList);
   }
 });
 

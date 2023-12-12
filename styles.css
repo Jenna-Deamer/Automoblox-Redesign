@@ -11,6 +11,15 @@
   --yellow: #ffdf00;
 }
 
+@keyframes fadeOut {
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+  
+}
 body {
   position: relative;
   min-height: 100vh;
@@ -104,6 +113,10 @@ h2 {
 .removeBtn:hover{
   transition: .5s;
   background-color: var(--red);
+}
+
+.cartItemRemoved{
+  animation: fadeOut 0.5s ease forwards;
 }
 
 #cartSum{
