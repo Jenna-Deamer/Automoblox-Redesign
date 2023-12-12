@@ -181,7 +181,7 @@ const addToCart = (productName, productPrice) => {
     if (clickedButton) {
       clickedButton.classList.add("addedToCartShake");
 
-      //remove the class so next time this button is clicked it runs again
+      //remove the class so next time this button is clicked it shakes again
       setTimeout(() => {
         clickedButton.classList.remove("addedToCartShake");
       },500); //remove after .5s
@@ -200,7 +200,7 @@ const createProductCards = (products) => {
         <div class="productHeader">
           <h3>${product.Name}</h3>
           <img src="${product.smallThumbnail}" alt="${product.Name}" class="img-fluid customSmallThumbnail" />
-          <p class="mt-2">Price: $${product.Price}</p>
+          <p class="mt-2 fw-bold">Price: $${product.Price}</p>
           <button class="addToCartBtn btn btn-primary mt-2" data-product-name="${product.Name}" data-product-price="${product.Price}"><i class="bi bi-cart"></i> Add to Cart</button>
           <button class="btn btn-primary mt-2 viewDetailsBtn" data-bs-toggle="modal" data-bs-target="#productModal" data-product-name="${product.Name}"><i class="bi bi-file-bar-graph"></i> View Details</button>
         </div>

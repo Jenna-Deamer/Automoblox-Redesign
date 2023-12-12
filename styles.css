@@ -4,6 +4,7 @@
   --red: #dd2521;
   --black: #332828;
   --white: #fff;
+  --grey: #ccc;
   --secondary: #894B4A;
   --action: #F07775;
   --actionHover: #c76261;
@@ -37,8 +38,8 @@
 100% { 
     transform: rotate(5deg); 
 } 
-
 }
+
 body {
   position: relative;
   min-height: 100vh;
@@ -74,6 +75,7 @@ h2 {
 .btn-primary {
   background-color: var(--action);
   border: var(--action);
+  box-shadow: 5px 5px var(--grey);
 }
 
 .btn-primary:hover,
@@ -92,10 +94,11 @@ h2 {
   width: 150px;
   height: auto;
   border-radius: 12px;
+  transition: transform .5s;;
 }
-/* .customSmallThumbnail:hover{
-  animation: shake .5s infinite;
-} */
+.customSmallThumbnail:hover{
+ transform: scale(1.5); 
+}
 
 /*Product Details On MODAL*/
 .customSmallText {
