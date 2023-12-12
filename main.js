@@ -27,7 +27,7 @@ const productList = [
     Price: 12.99,
     smallThumbnail: "./images/A9_small.jpg",
     largeThumbnail: "./images/A9_large.jpg",
-    color: "orange"
+    color: "orange",
   },
   {
     Name: "A9S",
@@ -35,7 +35,7 @@ const productList = [
     Price: 15.99,
     smallThumbnail: "./images/A9S_small.jpg",
     largeThumbnail: "./images/A9S_large.jpg",
-    color: "black"
+    color: "black",
   },
   {
     Name: "C9",
@@ -43,7 +43,7 @@ const productList = [
     Price: 25.99,
     smallThumbnail: "./images/C9_small.jpg",
     largeThumbnail: "./images/C9_large.jpg",
-    color: "red"
+    color: "red",
   },
   {
     Name: "C9S",
@@ -51,7 +51,7 @@ const productList = [
     Price: 29.99,
     smallThumbnail: "./images/C9S_small.jpg",
     largeThumbnail: "./images/C9S_large.jpg",
-    color: "brown"
+    color: "brown",
   },
   {
     Name: "M9",
@@ -59,7 +59,7 @@ const productList = [
     Price: 19.99,
     smallThumbnail: "./images/M9_small.jpg",
     largeThumbnail: "./images/M9_large.jpg",
-    color: "lightblue"
+    color: "lightblue",
   },
   {
     Name: "S9",
@@ -67,7 +67,7 @@ const productList = [
     Price: 32.99,
     smallThumbnail: "./images/S9_small.jpg",
     largeThumbnail: "./images/S9_large.jpg",
-    color: "blue"
+    color: "blue",
   },
   {
     Name: "S9R",
@@ -75,7 +75,7 @@ const productList = [
     Price: 34.99,
     smallThumbnail: "./images/S9R_small.jpg",
     largeThumbnail: "./images/S9R_large.jpg",
-    color: "darkblue"
+    color: "darkblue",
   },
   {
     Name: "T9",
@@ -83,7 +83,7 @@ const productList = [
     Price: 27.99,
     smallThumbnail: "./images/T9_small.jpg",
     largeThumbnail: "./images/T9_large.jpg",
-    color: "green"
+    color: "green",
   },
   {
     Name: "X9",
@@ -91,7 +91,7 @@ const productList = [
     Price: 39.99,
     smallThumbnail: "./images/X9_small.jpg",
     largeThumbnail: "./images/X9_large.jpg",
-    color: "purple"
+    color: "purple",
   },
   {
     Name: "X9X",
@@ -99,7 +99,7 @@ const productList = [
     Price: 42.99,
     smallThumbnail: "./images/X9X_small.jpg",
     largeThumbnail: "./images/X9X_large.jpg",
-    color: "green"
+    color: "green",
   },
 ];
 
@@ -172,7 +172,23 @@ const addToCart = (productName, productPrice) => {
     localStorage.setItem("cart", JSON.stringify(cartList));
 
     console.log(`${productName} added to cart with ${productPrice} as price`);
+
+    //select button by looking for addToCartBtn class & a stored data-product name that
+    //matches the stored productName variable.
+    const clickedButton = document.querySelector(`.addToCartBtn[data-product-name="${productName}"]`);
+
+    //add animation to selected button if querySelector found it
+    if (clickedButton) {
+      clickedButton.classList.add("addedToCartShake");
+
+      //remove the class so next time this button is clicked it runs again
+      setTimeout(() => {
+        clickedButton.classList.remove("addedToCartShake");
+      },500); //remove after .5s
+    }
+   
   }
+
 };
 
 //generate productCards to display in product section
