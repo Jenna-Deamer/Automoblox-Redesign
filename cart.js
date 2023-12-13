@@ -2,6 +2,11 @@
 const cartContainer = document.getElementById("cartContainer");
 //Cart Sum holder
 const cartSum = document.getElementById("cartSum");
+//form
+const checkoutForm = document.getElementById("checkoutForm");
+//form checkoutButton
+const checkoutButton = document.getElementById("checkoutBtn");
+
 //footer
 const footer = document.querySelector("footer");
 /*In order to ensure the footer will always be at the bottom without overlapping content
@@ -14,8 +19,35 @@ const footerHeight = footer.offsetHeight;
 document.body.style.paddingBottom = footerHeight + "px";
 
 //retrieve cart data from localStorage if it exists
-const storedCart = localStorage.getItem("cart");
-const cartList = JSON.parse(storedCart) || []; //if no cart is stored, Initialize as empty
+let storedCart = localStorage.getItem("cart");
+let cartList = JSON.parse(storedCart) || []; //if no cart is stored, Initialize as empty
+
+/**Checkout Form Validation */
+function validateCheckout() {
+  //checkout fields
+  const firstName = document.getElementById("fname").value;
+  const lastName = document.getElementById("lname").value;
+  const cardNum = document.getElementById("cardNum").value;
+  const cvv = document.getElementById("cvv").value;
+  const expirationMonth = document.getElementById("expMonth").value;
+  const expirationYear = document.getElementById("expYear").value;
+
+  // Check if any field is empty
+  if (
+    firstName === "" ||
+    lastName === "" ||
+    cardNum === "" ||
+    cvv === "" ||
+    expirationMonth === "" ||
+    expirationYear === ""
+  ) {
+    alert("All fields must be filled out!");
+    return false; //prevents form submission
+  }
+
+  alert("Form submitted Successfully your order will not be on the way!");
+  return true; //allows form submission
+}
 
 const displaySum = () => {
   let sum = 0;
@@ -59,7 +91,7 @@ const displayCartItems = (cartItems) => {
 
 const removeCartItem = (index) => {
   //use index to select the cartItem that needs the animation class applied
-  const cartItemToRemove = document.querySelectorAll(".cartItem")[index]
+  const cartItemToRemove = document.querySelectorAll(".cartItem")[index];
   // Add the animation class to fade out selected item
   cartItemToRemove.classList.add("cartItemRemoved");
 
@@ -91,6 +123,23 @@ cartContainer.addEventListener("click", function (event) {
     // displaySum();
     // //render updated cartList
     // displayCartItems(cartList);
+  }
+});
+
+//listen for form submission run validation
+checkoutForm.addEventListener("submit", function (event) {
+  //do not let the form submit, Prevent its normal behavior
+  event.preventDefault();
+  
+  //if function returns true
+  if (validateCheckout()) {
+    //clear cartList
+    cartList = [];
+    //update cart & sum display
+    displaySum();
+    displayCartItems(cartList);
+  } else {
+    console.log("failed");
   }
 });
 

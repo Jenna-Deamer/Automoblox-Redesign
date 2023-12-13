@@ -26,17 +26,20 @@
     transform: rotate(5deg); 
 } 
 
-25% { 
+20% { 
     transform: rotate(-8deg); 
 } 
 30%{
   transform: rotate(-16deg);
 }
+60%{
+  transform: rotate(8deg)
+}
 50%{
-  transform: rotate(-8deg);
+  transform: rotate(16deg);
 }
 100% { 
-    transform: rotate(5deg); 
+    transform: rotate(-5deg); 
 } 
 }
 
@@ -64,6 +67,15 @@ header h1{
 header h2{
   font-size: 3rem;
 }
+
+@media screen and (max-width: 600px) {
+  header h1{
+    font-size: 2.5rem;
+  }
+  header h2{
+    font-size: 2rem;
+  }
+}
 h1,h2,h3,h4{
   font-family: 'Rowdies', sans-serif;
 }
@@ -87,7 +99,7 @@ h2 {
 
 /*Product Section on HOME*/
 .addedToCartShake{
-  animation: shake .3s linear;
+  animation: shake .5s;
 }
 /*Class to apply to JS productCards*/
 .customSmallThumbnail {
