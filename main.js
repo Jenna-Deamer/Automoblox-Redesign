@@ -149,10 +149,22 @@ const showProductDetails = (productName) => {
   // console.log(modalContent);
 
   //show modal
-  const productModal = new bootstrap.Modal(
-    document.getElementById("productModal")
-  );
+  const productModalElement = document.getElementById("productModal");
+  const productModal = new bootstrap.Modal(productModalElement);
+
   productModal.show();
+//The modal backdrop is not being removed correctly when closing out
+//Handle the hidden event manually to ensure proper cleanup
+  productModalElement.addEventListener("hidden.bs.modal", function () {
+    //dispose of modal when its hidden
+    productModal.dispose();
+
+    //Manually remove backdrop
+    const backdrop = document.querySelector(".modal-backdrop");
+    if (backdrop) {
+      backdrop.remove();
+    }
+  });
 };
 
 //add selected product name & price to cart
@@ -175,7 +187,9 @@ const addToCart = (productName, productPrice) => {
 
     //select button by looking for addToCartBtn class & a stored data-product name that
     //matches the stored productName variable.
-    const clickedButton = document.querySelector(`.addToCartBtn[data-product-name="${productName}"]`);
+    const clickedButton = document.querySelector(
+      `.addToCartBtn[data-product-name="${productName}"]`
+    );
 
     //add animation to selected button if querySelector found it
     if (clickedButton) {
@@ -184,11 +198,9 @@ const addToCart = (productName, productPrice) => {
       //remove the class so next time this button is clicked it shakes again
       setTimeout(() => {
         clickedButton.classList.remove("addedToCartShake");
-      },500); //remove after .5s
+      }, 500); //remove after .5s
     }
-   
   }
-
 };
 
 //generate productCards to display in product section
