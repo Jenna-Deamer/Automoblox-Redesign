@@ -68,11 +68,12 @@ body {
 }
 
 .heroContainer>figure {
-/* max-width: 506px; */
+  /* max-width: 506px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .actionButton {
   background-color: var(--action);
   color: var(--white);
@@ -83,6 +84,7 @@ body {
   margin-right: 1em;
   margin-top: 1em;
   width: 200px;
+  text-decoration: none;
 }
 
 .actionButton:hover {
