@@ -5,7 +5,7 @@
   --black: #332828;
   --white: #fff;
   --grey: #ccc;
-  --secondary: #333354;
+  --secondary: #413c3c;
   --action: #dd2521;
   --actionHover: #f34e4b;
 
@@ -139,6 +139,25 @@ h2 {
   background-color: var(--actionHover) !important;
   border-color: var(--actionHover);
 }
+/*PRODUCTS PAGE*/
+.productsBanner{
+  background-image: url(/images/banner.jpg);
+ height: 30vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  border-bottom: 2px black solid;
+  text-shadow: 1px 2px 3px var(--black);
+}
+.productsBanner > h1,h2{
+  color: var(--white);
+}
+
 
 /*Product Section on HOME*/
 .addedToCartShake {
