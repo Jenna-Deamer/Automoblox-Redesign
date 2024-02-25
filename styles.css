@@ -5,7 +5,7 @@
   --black: #332828;
   --white: #fff;
   --grey: #ccc;
-  --secondary: #413c3c;
+  --secondary: #4a4444;
   --action: #dd2521;
   --actionHover: #f34e4b;
 
@@ -226,13 +226,23 @@ h2 {
 }
 
 /*Contact Page*/
-form {
-  padding: 2em 1em 2em 1em;
+#formSection > figure{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4em;
 }
 
+.illustration {
+  max-height: 250px;
+  padding-bottom: 2em;
+}
+.submitButton{
+  margin-bottom: 4em;
+}
 textarea {
   max-height: 300px;
-  resize: vertical;
+  resize: none;
 }
 
 footer {

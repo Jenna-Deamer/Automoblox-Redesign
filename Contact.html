@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Automoblox</title>
-    <link rel="icon" type="image/png" href="./images/automoblox_logo.png">
+    <link rel="icon" type="image/png" href="./images/automoblox_logo.png" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -66,118 +67,64 @@
       </div>
     </nav>
 
-    <header class="text-center pt-4 pb-4">
-      <h1>Your Cart</h1>
-    </header>
-
     <main class="container">
-      <section class="row">
-        <div class="col-md-8 checkoutContainer">
-          <h2>Checkout</h2>
-          <form action="" id="checkoutForm">
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="firstName" class="form-label mt-2"
-                  ><i class="bi bi-person-fill"></i> First Name:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="fname"
-                  placeholder="John"
-                />
-              </div>
-              <div class="col-md-6">
-                <label for="lastName" class="form-label mt-2"
-                  ><i class="bi bi-person-fill"></i> Last Name:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lname"
-                  placeholder="Doe"
-                />
-              </div>
-            </div>
+      <header class="text-center pt-4 pb-4">
+        <h1>Contact Us</h1>
+        <h2>Reach Out. We're Here to Help!</h2>
+      </header>
 
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="cardNumber" class="form-label mt-2"
-                  ><i class="bi bi-credit-card-fill"></i> Card Number:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cardNum"
-                  placeholder="1111-2222-3333-4444"
-                  pattern="\d{4}-\d{4}-\d{4}-\d{4}"
-                />
-              </div>
-              <div class="col-md-6">
-                <label for="cvv" class="form-label mt-2"
-                  ><i class="bi bi-credit-card-2-back-fill"></i> CVV:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cvv"
-                  name="cvv"
-                  minlength="3"
-                  placeholder="123"
-                />
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="expMonth" class="form-label mt-2"
-                  ><i class="bi bi-calendar-week-fill"></i> Exp Month:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="expMonth"
-                  name="expMonth"
-                  placeholder="September"
-                />
-              </div>
-              <div class="col-md-6">
-                <label for="expYear" class="form-label mt-2"
-                  ><i class="bi bi-calendar-week-fill"></i> Exp Year:</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="expYear"
-                  name="expYear"
-                  minlength="4"
-                  placeholder="2028"
-                />
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <div class="col-md-12 text-center">
-                <!-- Change made here -->
-                <button class="btn btn-primary" id="checkoutBtn">
-                  Checkout
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <div class="col-md-4 pb-4">
-          <h2>Cart</h2>
-          <article id="cartContainer">
-            <!--CartItems populated by JS from cartList[]-->
-          </article>
-          <!--Sum displayed from cart.js-->
-          <div class="mt-4"><span id="cartSum"></span></div>
-        </div>
+      <section id="formSection" class="row mb-2">
+        <figure class="col-lg-6">
+          <img
+            src="/images//undraw_mailbox_re_dvds.svg"
+            alt="Mailbox and letter illustration"
+            class="illustration"
+          />
+        </figure>
+        <form  action="https://formsubmit.co/jennadeamer@gmail.com" method="POST" class="row col-lg-6" onsubmit="return validateForm()">
+          <fieldset class="mb-3 col-lg-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              placeholder="Enter your first name"
+            />
+          </fieldset>
+          <fieldset class="mb-3 col-lg-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="Enter your last name"
+            />
+          </fieldset>
+          <fieldset class="mb-3 col-lg-12">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="name@example.com"
+            />
+          </fieldset>
+          <fieldset class="mb-3 col-lg-12">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="3"
+              placeholder="Enter your message"
+            ></textarea>
+          </fieldset>
+          <fieldset class="mb-4">
+            <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+          </fieldset>
+        </form>
       </section>
     </main>
-    <footer>
+    <footer class="pt-4">
       <div class="container">
         <section class="row">
           <div class="col-sm-6">
@@ -263,7 +210,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script src="/scripts/cart.js"></script>
+    <script src="/scripts/contact.js"></script>
     <script src="/scripts/main.js"></script>
   </body>
 </html>
