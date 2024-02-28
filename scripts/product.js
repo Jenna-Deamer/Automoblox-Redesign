@@ -1,9 +1,5 @@
 //get container from html
 const productContainer = document.getElementById("productCardsContainer");
-
-//bootstrap modal
-const modal = document.getElementById("modalBody");
-const closeButton = document.querySelector(".modal .btn-close");
 //buttons
 const viewDetailsButtons = document.querySelectorAll(".viewDetailsBtn");
 const addToCartButtons = document.querySelectorAll(".addToCartBtn");
@@ -13,7 +9,7 @@ const productList = [
   {
     Name: "A9",
     Description: "Description for A9",
-    Price: 12.99,
+    Price: 17.99,
     smallThumbnail: "./images/A9_small.jpg",
     largeThumbnail: "./images/A9_large.jpg",
     color: "orange",
@@ -21,7 +17,7 @@ const productList = [
   {
     Name: "A9S",
     Description: "Description for A9S",
-    Price: 15.99,
+    Price: 19.99,
     smallThumbnail: "./images/A9S_small.jpg",
     largeThumbnail: "./images/A9S_large.jpg",
     color: "black",
@@ -37,7 +33,7 @@ const productList = [
   {
     Name: "C9S",
     Description: "Description for C9S",
-    Price: 29.99,
+    Price: 28.99,
     smallThumbnail: "./images/C9S_small.jpg",
     largeThumbnail: "./images/C9S_large.jpg",
     color: "brown",
@@ -45,7 +41,7 @@ const productList = [
   {
     Name: "M9",
     Description: "Description for M9",
-    Price: 19.99,
+    Price: 22.99,
     smallThumbnail: "./images/M9_small.jpg",
     largeThumbnail: "./images/M9_large.jpg",
     color: "lightblue",
@@ -53,7 +49,7 @@ const productList = [
   {
     Name: "S9",
     Description: "Description for S9",
-    Price: 32.99,
+    Price: 29.99,
     smallThumbnail: "./images/S9_small.jpg",
     largeThumbnail: "./images/S9_large.jpg",
     color: "blue",
@@ -61,7 +57,7 @@ const productList = [
   {
     Name: "S9R",
     Description: "Description for S9R",
-    Price: 34.99,
+    Price: 30.99,
     smallThumbnail: "./images/S9R_small.jpg",
     largeThumbnail: "./images/S9R_large.jpg",
     color: "darkblue",
@@ -77,7 +73,7 @@ const productList = [
   {
     Name: "X9",
     Description: "Description for X9",
-    Price: 39.99,
+    Price: 24.99,
     smallThumbnail: "./images/X9_small.jpg",
     largeThumbnail: "./images/X9_large.jpg",
     color: "purple",
@@ -85,12 +81,13 @@ const productList = [
   {
     Name: "X9X",
     Description: "Description for X9X",
-    Price: 42.99,
+    Price: 28.99,
     smallThumbnail: "./images/X9X_small.jpg",
     largeThumbnail: "./images/X9X_large.jpg",
     color: "green",
   },
 ];
+
 
 //retrieve cart data from localStorage if it exists
 const storedCart = localStorage.getItem("cart");
@@ -102,62 +99,46 @@ const showProductDetails = (productName) => {
   const product = productList.find((product) => product.Name === productName);
   //set car color to var & use inline style to update color to car color
   const carColor = product.color;
-  //Modify modal content
-  const modalContent = `
-  <article class="row customBorder pb-3" style="border-color: ${carColor};">
-  
-  <div class="col-md-6">
-  <img src="${product.largeThumbnail}" alt="${product.Name}" class="img-fluid customSmallThumbnail" />
-  </div>
-  <div class="col-md-6 mb-2">
-  <p class="mt-2">${product.Description}</p>
-  <p class="mt-2">Price: $${product.Price}</p>
-  <small class="customSmallText">In Stock</small>
-  </div>
-  </article>
-  
-  <article class="row pt-3">
-  <div class="col-md-6">
-  <h4 class="text-center"><i class="bi bi-star-fill starIcon"></i> Reviews</h4>
 
-  <p><i class="bi bi-person-circle"></i> Lorem ipsum dolor sit.</p>
-  <p><i class="bi bi-person-circle"></i> Lorem ipsum dolor sit.</p>
-  </div>
+ // Modify modal content
+ const modalContent = `
+ <section class="row customBorder pb-3" style="border-color: ${carColor};">
+   <div class="col-md-6">
+     <img src="${product.largeThumbnail}" alt="${product.Name}" class="img-fluid" />
+   </div>
+   <div class="col-md-6 mb-2">
+     <h3>${product.Name}</h3>
+     <p class="mt-2">${product.Description}</p>
+     <p class="mt-2">Price: $${product.Price}</p>
+     <p class="mt-2">Color: ${product.color}</p>
+     <small class="customSmallText">In Stock</small>
+   </div>
+ </div>
 
-  <div class="col-md-6">
-  <h4 class="text-center"><i class="bi bi-bar-chart"></i> Specifications</h4>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci distinctio ad eveniet quaerat!</p>
-  </div>
+   <div>
+     <h4 class="text-center"><i class="bi bi-bar-chart"></i> Specifications</h4>
+     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+     <ul>
+    <li><strong>Dimensions:</strong> 10" x 5" x 3"</li>
+    <li><strong>Weight:</strong> 1.5 lbs</li>
+    <li><strong>Material:</strong> High-quality plastic</li>
+    <li><strong>Recommended Age:</strong> 3 years and up</li>
+    </li>
+    <li><strong>Warranty:</strong> 1-year limited warranty</li>
+  </ul>
+   </div>
+ </section>
+`;
 
-  </article>
+   // Update the content of the modal body with the new modalContent
+   document.getElementById("productDetails").innerHTML = modalContent;
 
-  `;
-
-  //set content to modal content
-  modal.innerHTML = modalContent;
-  // console.log(modalContent);
-
-  //show modal
-  const productModalElement = document.getElementById("productModal");
-  const productModal = new bootstrap.Modal(productModalElement);
-
-  productModal.show();
-//The modal backdrop is not being removed correctly when closing out
-//Handle the hidden event manually to ensure proper cleanup
-  productModalElement.addEventListener("hidden.bs.modal", function () {
-    //dispose of modal when its hidden
-    productModal.dispose();
-
-    //Manually remove backdrop
-    const backdrop = document.querySelector(".modal-backdrop");
-    if (backdrop) {
-      backdrop.remove();
-    }
-  });
-};
+   // Show the modal
+   $('#productModal').modal('show');
+ };
 
 //add selected product name & price to cart
-const addToCart = (productName, productPrice) => {
+const addToCart = (productName, productPrice) => {  
   // Find the clicked product by its name
   const productToAdd = productList.find(
     (product) => product.Name === productName

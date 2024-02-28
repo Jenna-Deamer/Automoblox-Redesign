@@ -41,7 +41,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav p-3">
           <li class="nav-item">
             <a class="nav-link" href="./About.html"
               ><i class="bi bi-file-text-fill"></i> About</a
@@ -71,9 +71,27 @@
     </section>
     <main>
       <section class="row text-center pb-4" id="productCardsContainer">
-      
+           <!-- Product cards will be populated here -->
       </section>
     </main>
+
+<!-- Modal -->
+<article class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="productDetails">
+              <!-- Product details will be populated here -->
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</article>  
 
     <footer class="pt-2">
       <div class="container">
